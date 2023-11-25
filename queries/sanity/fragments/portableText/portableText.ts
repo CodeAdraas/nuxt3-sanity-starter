@@ -1,13 +1,10 @@
 import {groq} from '#imports'
 import {MARK_DEFS} from './markDefs'
+import {MODULES} from '../modules'
 
 export const PORTABLE_TEXT = groq`
     ...,
-    (_type == 'module.') => {
-        '_type': 'module.',
-        ${},
-    },
-    markDefs[] {
+    markDefs[]{
         ${MARK_DEFS}
     }
 `

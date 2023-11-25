@@ -1,10 +1,12 @@
 import {groq} from '#imports'
-import {MODULES} from '../modules'
+import {PAGE_SECTION} from '../pageSection'
 import {SEO} from '../seo'
 
 export const HOME_PAGE = groq`
-    modules[]{
-        ${MODULES}
+    sections[]{
+        ${PAGE_SECTION}
     },
-    ${SEO}
+    seo{
+        ${SEO}
+    }
 `

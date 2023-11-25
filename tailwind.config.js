@@ -9,7 +9,7 @@ module.exports = {
     ],
     theme: {
         fontFamily: {
-            sans: []
+            sans: ['"Segoe UI"', 'sans-serif'],
         },
         extend: {
             colors: {},

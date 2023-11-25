@@ -1,11 +1,14 @@
 import {groq} from '#imports'
-import {MODULES} from '../modules'
+import {PAGE_SECTION} from '../pageSection'
 import {SEO} from '../seo'
 
 export const PAGE = groq`
     title,
-    body[] {
-        ${MODULES}
+    "slug": slug.current,
+    sections[]{
+        ${PAGE_SECTION}
     },
-    ${SEO}
+    seo{
+        ${SEO}
+    }
 `

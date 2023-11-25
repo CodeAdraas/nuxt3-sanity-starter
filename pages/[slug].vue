@@ -1,15 +1,27 @@
 <script setup lang="ts">
 import {PAGE_QUERY} from '~/queries/sanity/page'
 
-const {data, error} = await useSanityQuery(PAGE_QUERY, {slug: useRoute().params.slug})
+// @TODO: error handling
+const {data} = await useSanityQuery(PAGE_QUERY, {slug: useRoute().params.slug})
 
-useSeoMeta({
-    title: data.value.seo.title,
-    description: data.value.seo.description,
-    ogDescription: data.value.seo.description
+if (!data.value) throw createError({
+    statusCode: 404,
+    fatal: true
 })
+
+if (data.value?.seo)
+    useSeoMeta({
+        title: data.value.seo?.title,
+        description: data.value.seo?.description,
+        ogDescription: data.value.seo?.description
+    })
 </script>
 
 <template>
-    <h1>{{data.title}}</h1>
+    <PageSection
+        v-if="data?.sections"
+        v-for="{body, anchorId} in data?.sections"
+        :body="body"
+        :anchor-id="anchorId"
+    />
 </template>

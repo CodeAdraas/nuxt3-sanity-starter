@@ -1,5 +1,4 @@
 import {groq} from '#imports';
-
 import {LINK_EXTERNAL} from '../linkExternal';
 import {LINK_INTERNAL} from '../linkInternal';
 

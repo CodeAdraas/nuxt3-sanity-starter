@@ -17,6 +17,10 @@ if (data.value?.seo) {
     });
 }
 
+useDrawerRegister([
+    'header.menu'
+])
+
 onMounted(() => useScroll({}).init());
 onBeforeUnmount(() => useScroll().destroy());
 </script>
@@ -31,6 +35,7 @@ onBeforeUnmount(() => useScroll().destroy());
             <NuxtPage />
         </main>
         <Footer />
+        <DrawerRenderer />
         <PreLoader />
     </ClientOnly>
 </template>

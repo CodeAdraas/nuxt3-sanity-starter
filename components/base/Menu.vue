@@ -2,7 +2,8 @@
 import { PortableText } from '@portabletext/vue'
 import {
     BaseLinkExternal as LinkExternal,
-    BaseLinkInternal as LinkInternal
+    BaseLinkInternal as LinkInternal,
+    BaseLinkAnchor as LinkAnchor
 } from '#components'
 
 defineProps(['links'])
@@ -10,23 +11,27 @@ defineProps(['links'])
 const components = {
     types: {
         linkExternal: ({value: {title, url, targetBlank}}: any, {slots}: any) => {
-            return h(LinkExternal, {url, targetBlank},() => title)
+            return h(LinkExternal, {url, targetBlank, class: ['py-3']},() => title)
         },
         linkInternal: ({value: {title, reference}}: any, {slots}: any) => {
             return h(LinkInternal, {
                 to: reference.slug,
-                documentType: reference.documentType
+                documentType: reference.documentType,
+                class: ['py-3']
             }, () => title)
+        },
+        linkAnchor: ({value: {title, anchorId}}: any, {slots}: any) => {
+            return h(LinkAnchor, {anchorId, class: ['py-3']}, () => title)
         }
     }
 }
 </script>
 
 <template>
-    <div>
+    <nav class="px-[20px] pb-8 divide-y">
         <PortableText
             :value="links"
             :components="components"
         />
-    </div>
+    </nav>
 </template>

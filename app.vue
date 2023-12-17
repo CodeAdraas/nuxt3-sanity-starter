@@ -28,9 +28,6 @@ onBeforeUnmount(() => useScroll().destroy());
 <template>
     <ClientOnly>
         <Header />
-        <!--  -->
-        <HeaderMenu/>
-        <!--  -->
         <main class="font-sans">
             <NuxtPage />
         </main>

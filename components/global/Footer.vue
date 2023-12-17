@@ -2,5 +2,5 @@
 </script>
 
 <template>
-    <footer></footer>
+    <footer id="footer"></footer>
 </template>
